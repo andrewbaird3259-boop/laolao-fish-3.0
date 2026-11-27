@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#087fae">
+<meta name="description" content="捞捞小鱼 3.0 · 深海奇遇首页视觉原型">
+<title>捞捞小鱼 3.0 · 深海奇遇</title>
+<style>
+:root{
+  --deep:#063f61;--deep2:#075c7c;--sea:#078db6;--aqua:#67e4e9;--mint:#a8f2df;
+  --gold:#ffd46f;--gold2:#f5a936;--cream:#fff8df;--white:#f5fdff;
+  --glass:rgba(4,73,105,.56);--glass2:rgba(9,103,135,.55);--stroke:rgba(225,255,255,.58);
+  --shadow:0 12px 28px rgba(0,44,74,.28);--radius:25px;
+}
+*{box-sizing:border-box}
+html{min-height:100%;background:#087fae}
+body{margin:0;min-height:100vh;font-family:ui-rounded,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;color:var(--white);background:#087fae;overflow-x:hidden}
+button{font:inherit;color:inherit}
+.ocean{min-height:100svh;position:relative;isolation:isolate;overflow:hidden;padding:max(14px,env(safe-area-inset-top)) 18px calc(110px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(2,106,151,.13),rgba(0,49,83,.48)),url('assets/backgrounds/home-reef.png') center 36%/cover fixed;}
+.ocean:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,113,157,.13) 0%,rgba(0,89,132,.04) 37%,rgba(0,45,76,.47) 100%)}
+.ocean:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 36%,transparent 20%,rgba(0,37,65,.22) 100%)}
+.light-shaft{position:absolute;inset:-10% -20% 45%;z-index:-1;pointer-events:none;background:repeating-conic-gradient(from 185deg at 50% 0%,transparent 0deg 8deg,rgba(230,255,255,.15) 9deg 10deg,transparent 11deg 22deg);filter:blur(13px);animation:ray 14s ease-in-out infinite alternate}
+@keyframes ray{to{transform:translateX(2%) rotate(3deg);opacity:.58}}
+.bubble{position:absolute;z-index:0;border:1px solid rgba(226,255,255,.8);border-radius:50%;background:linear-gradient(135deg,rgba(255,255,255,.62),rgba(255,255,255,.02) 65%);box-shadow:inset -3px -4px 8px rgba(36,197,231,.28);animation:rise 10s linear infinite;pointer-events:none}
+.b1{width:17px;height:17px;left:6%;top:44%}.b2{width:9px;height:9px;left:91%;top:36%;animation-delay:-4s}.b3{width:25px;height:25px;left:80%;top:68%;animation-delay:-7s}.b4{width:12px;height:12px;left:22%;top:79%;animation-delay:-2s}
+@keyframes rise{0%{transform:translateY(28px);opacity:0}15%{opacity:.8}100%{transform:translateY(-170px);opacity:0}}
+.shell{max-width:1080px;margin:0 auto;position:relative;z-index:2}
+.topbar{display:flex;align-items:center;gap:10px}
+.profile{display:flex;align-items:center;gap:10px;min-width:0;flex:1;padding:7px 13px 7px 7px;border:1px solid var(--stroke);border-radius:23px;background:linear-gradient(135deg,rgba(4,79,115,.78),rgba(8,121,151,.55));box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.3);backdrop-filter:blur(12px)}
+.avatar{width:48px;height:48px;flex:none;display:grid;place-items:center;border:3px solid #fff;border-radius:50%;background:linear-gradient(145deg,#ffe8a9,#ffae75);box-shadow:0 3px 0 #bd754c;font-size:27px}
+.profile-info{min-width:0;flex:1}.profile-line{display:flex;align-items:baseline;gap:7px;white-space:nowrap}.level{font-size:14px;font-weight:1000}.rank{font-size:11px;color:#d8faff}.xp{height:7px;margin-top:6px;overflow:hidden;border-radius:9px;background:rgba(0,37,66,.68)}.xp span{display:block;width:32%;height:100%;border-radius:9px;background:linear-gradient(90deg,#fff0a3,#ffae3c);box-shadow:0 0 9px #ffcf62}
+.wallet{display:flex;gap:7px}.currency{cursor:pointer;height:43px;display:flex;align-items:center;gap:6px;padding:0 10px;border:1px solid var(--stroke);border-radius:18px;background:linear-gradient(145deg,rgba(5,86,122,.8),rgba(5,64,98,.7));box-shadow:var(--shadow),inset 0 1px 0 #ffffff35;font-size:13px;font-weight:950;white-space:nowrap}.currency .symbol{font-size:21px;filter:drop-shadow(0 2px 2px #00344c88)}.plus{display:grid;place-items:center;width:19px;height:19px;border-radius:50%;background:linear-gradient(#6ce5b7,#21ad83);box-shadow:0 2px 0 #117d69;font-size:17px;font-weight:900}
+.settings{width:44px;height:44px;flex:none;border:1px solid var(--stroke);border-radius:50%;background:linear-gradient(145deg,#1689b5,#07547f);box-shadow:var(--shadow),inset 0 1px 0 #ffffff55;font-size:21px;cursor:pointer}
+.brand{text-align:center;margin:18px auto 0;max-width:620px}.brand h1{margin:0;font-size:clamp(36px,7vw,58px);line-height:1;font-weight:1000;letter-spacing:4px;color:#fff;text-shadow:0 3px 0 #54c8ed,0 7px 0 #0875a8,0 11px 18px rgba(0,44,73,.68)}.brand p{display:inline-flex;align-items:center;gap:8px;margin:11px 0 0;padding:6px 19px;border:1px solid #fff0bd;border-radius:99px;background:linear-gradient(180deg,#fff0b8,#ffbd60);color:#80501e;font-size:13px;font-weight:1000;box-shadow:0 4px 0 #bd793a,0 9px 18px #003d5b66}
+.quick{position:absolute;top:145px;right:max(18px,calc((100vw - 1080px)/2));z-index:4;display:grid;gap:11px}.quick button{min-width:63px;padding:8px 9px;border:1px solid rgba(255,255,255,.68);border-radius:17px;background:linear-gradient(145deg,rgba(255,255,255,.44),rgba(10,103,142,.56));box-shadow:0 7px 16px rgba(0,50,76,.32),inset 0 1px 0 #fff8;backdrop-filter:blur(10px);font-size:12px;font-weight:950;text-shadow:0 2px 5px #064b70;cursor:pointer}.quick b{display:block;margin-bottom:2px;font-size:25px;line-height:1.1;filter:drop-shadow(0 3px 3px #00425c66)}
+.hero{height:clamp(230px,34vh,345px);max-width:760px;margin:0 auto;position:relative;display:flex;align-items:center;justify-content:center}.hero-glow{position:absolute;width:50%;height:42%;border-radius:50%;background:radial-gradient(ellipse,rgba(178,255,245,.48),transparent 70%);filter:blur(9px)}.hero-fish{position:relative;width:min(48vw,270px);max-height:96%;object-fit:contain;filter:drop-shadow(0 18px 12px rgba(0,43,67,.45));animation:swim 4.2s ease-in-out infinite}.side-fish{position:absolute;object-fit:contain;filter:drop-shadow(0 10px 8px rgba(0,43,67,.4));animation:swim 5s ease-in-out infinite}.side-fish.left{width:clamp(76px,17vw,132px);left:4%;bottom:13%;animation-delay:-2s}.side-fish.right{width:clamp(66px,14vw,112px);right:13%;top:8%;animation-delay:-1s}@keyframes swim{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
+.cta-wrap{max-width:600px;margin:-4px auto 0;position:relative;z-index:3}.cta{width:100%;min-height:78px;display:flex;align-items:center;justify-content:center;gap:14px;padding:12px 18px;border:2px solid #fff2c5;border-radius:28px;background:linear-gradient(180deg,#fff0a1 0%,#ffd263 58%,#f5aa36 100%);color:#78420e;box-shadow:inset 0 3px 0 #fff9,0 6px 0 #bd792b,0 14px 24px rgba(0,49,75,.45);cursor:pointer;transition:transform .15s,filter .15s}.cta:hover{filter:brightness(1.04)}.cta:active{transform:translateY(3px);box-shadow:inset 0 3px 0 #fff9,0 3px 0 #bd792b,0 8px 15px rgba(0,49,75,.4)}.play{width:45px;height:45px;flex:none;display:grid;place-items:center;border-radius:50%;background:linear-gradient(#fffbdc,#ffe18b);box-shadow:0 3px 0 #e5a447;color:#b86b18;font-size:22px}.cta-copy{text-align:left}.cta strong{display:block;font-size:clamp(23px,5vw,31px);font-weight:1000;letter-spacing:2px;line-height:1.1}.cta small{display:block;margin-top:4px;font-size:11px;font-weight:850;letter-spacing:.3px}
+.feature-grid{max-width:790px;margin:25px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.feature{position:relative;min-height:164px;overflow:hidden;padding:11px 8px 14px;border:1px solid rgba(239,255,255,.7);border-radius:25px;text-align:center;box-shadow:0 10px 23px rgba(0,43,75,.36),inset 0 2px 0 rgba(255,255,255,.55);cursor:pointer;transition:transform .16s,filter .16s}.feature:hover{transform:translateY(-3px);filter:brightness(1.06)}.feature:before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,rgba(255,255,255,.38),transparent 55%);pointer-events:none}.feature:after{content:"";position:absolute;width:120px;height:120px;right:-55px;top:-62px;border-radius:50%;background:rgba(255,255,255,.13)}.feature.aqua{background:linear-gradient(155deg,rgba(49,216,230,.95),rgba(5,118,166,.97))}.feature.map{background:linear-gradient(155deg,rgba(59,225,194,.96),rgba(5,129,142,.97))}.feature.dex{background:linear-gradient(155deg,rgba(171,143,255,.97),rgba(84,73,181,.98))}.feature-art{height:88px;position:relative;display:grid;place-items:center}.feature-art img{height:88px;max-width:94%;object-fit:contain;filter:drop-shadow(0 8px 7px rgba(0,40,66,.5))}.feature-art .icon-art{font-size:55px;filter:drop-shadow(0 6px 5px rgba(0,40,66,.35))}.feature strong{position:relative;display:block;font-size:15px;font-weight:1000;text-shadow:0 2px 5px rgba(0,44,72,.55)}.feature small{position:relative;display:block;margin-top:4px;color:#edfcff;font-size:11px;font-weight:800;text-shadow:0 1px 4px rgba(0,44,72,.5)}
+.section-note{max-width:760px;margin:15px auto 0;text-align:center;color:#e1fbff;font-size:11px;font-weight:700;text-shadow:0 2px 5px #003d60}
+.bottom-nav{position:fixed;z-index:10;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:5px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));border-top:1px solid rgba(219,255,255,.45);background:linear-gradient(180deg,rgba(6,115,159,.94),rgba(3,64,105,.98));box-shadow:0 -9px 26px rgba(0,43,73,.3);backdrop-filter:blur(15px)}.nav-item{max-width:150px;flex:1;display:grid;justify-items:center;gap:3px;padding:7px 3px 5px;border:1px solid transparent;border-radius:18px;background:transparent;color:#d9f8ff;font-size:11px;font-weight:900;cursor:pointer}.nav-item .ico{font-size:23px;line-height:1.1;filter:drop-shadow(0 2px 2px #003d5c66)}.nav-item.active{border-color:rgba(226,255,255,.7);background:linear-gradient(180deg,#7cecf0,#1ebbd8);box-shadow:inset 0 2px 0 #fff9,0 3px 10px rgba(0,45,74,.4);color:white;text-shadow:0 2px 4px #08769a}
+.toast{position:fixed;z-index:40;left:50%;bottom:calc(100px + env(safe-area-inset-bottom));transform:translate(-50%,15px);opacity:0;pointer-events:none;padding:10px 18px;border:1px solid rgba(205,255,255,.7);border-radius:99px;background:rgba(4,65,94,.94);box-shadow:var(--shadow);font-size:13px;font-weight:850;white-space:nowrap;transition:.22s}.toast.show{opacity:1;transform:translate(-50%,0)}
+.modal{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(0,40,64,.66);backdrop-filter:blur(7px)}.modal.show{display:flex}.dialog{width:min(420px,100%);padding:23px;border:2px solid #d5ffff;border-radius:28px;background:linear-gradient(160deg,#35c8dc,#0875a8 75%);box-shadow:0 20px 55px rgba(0,31,49,.55);text-align:center}.dialog h2{margin:0 0 8px;font-size:22px}.dialog p{margin:0 0 18px;color:#e5fbff;font-size:13px;line-height:1.7}.dialog button{min-width:120px;border:0;border-radius:99px;padding:11px 22px;background:linear-gradient(#fff0a7,#ffc95b);box-shadow:0 3px 0 #b77830;color:#75420f;font-weight:1000;cursor:pointer}
+@media(min-width:760px){.ocean{padding-left:30px;padding-right:30px}.brand{margin-top:23px}.hero{height:315px}.quick{top:170px}.feature-grid{gap:18px}.feature{min-height:180px}.feature-art,.feature-art img{height:100px}}
+@media(max-width:520px){.ocean{background-attachment:scroll;background-position:center center}.topbar{gap:6px}.avatar{width:41px;height:41px;font-size:23px}.profile{gap:7px;padding:6px 8px 6px 6px}.level{font-size:12px}.rank{font-size:10px}.currency{height:38px;padding:0 7px;gap:4px;font-size:11px}.currency .symbol{font-size:17px}.currency .plus{width:16px;height:16px;font-size:14px}.settings{width:38px;height:38px;font-size:18px}.brand{margin-top:17px}.brand h1{font-size:clamp(34px,9vw,47px)}.brand p{font-size:11px}.quick{top:128px;right:12px;gap:7px}.quick button{min-width:49px;padding:6px 6px;border-radius:14px;font-size:10px}.quick b{font-size:21px}.hero{height:clamp(210px,31vh,285px);margin-top:4px}.hero-fish{width:min(53vw,235px)}.side-fish.left{left:1%;bottom:12%}.side-fish.right{right:11%;top:10%}.cta{min-height:70px;border-radius:24px}.feature-grid{gap:8px;margin-top:21px}.feature{min-height:142px;padding:8px 4px 11px;border-radius:20px}.feature-art,.feature-art img{height:70px}.feature-art .icon-art{font-size:44px}.feature strong{font-size:12px}.feature small{font-size:9px}.section-note{font-size:10px}}
+@media(max-width:370px){.wallet{gap:3px}.currency{padding:0 5px}.currency .plus{display:none}.profile{min-width:104px}.rank{display:none}.quick{right:8px}.hero{height:205px}.feature strong{font-size:11px}.feature small{font-size:8px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="ocean">
+  <div class="light-shaft" aria-hidden="true"></div>
+  <i class="bubble b1" aria-hidden="true"></i><i class="bubble b2" aria-hidden="true"></i><i class="bubble b3" aria-hidden="true"></i><i class="bubble b4" aria-hidden="true"></i>
+  <div class="shell">
+    <header class="topbar">
+      <div class="profile">
+        <div class="avatar" aria-hidden="true">🐠</div>
+        <div class="profile-info"><div class="profile-line"><span class="level" id="homeLevel">Lv.01</span><span class="rank" id="homeRank">阳光珊瑚海</span></div><div class="xp" aria-label="海域进度"><span id="homeXp"></span></div></div>
+      </div>
+      <div class="wallet" aria-label="资源">
+        <div class="currency" data-action="海洋补给"><span class="symbol">🪙</span><span id="homeCoins">0</span><span class="plus">+</span></div>
+        <div class="currency" data-action="海洋补给"><span class="symbol">🫧</span><span id="homePearls">0</span><span class="plus">+</span></div>
+      </div>
+      <button class="settings" aria-label="设置" data-action="设置">⚙</button>
+    </header>
+    <section class="brand"><h1>捞捞小鱼</h1><p>✦ 深海奇遇 · 3.0 ✦</p></section>
+    <aside class="quick" aria-label="快捷入口">
+      <button data-action="每日签到"><b>📅</b>签到</button>
+      <button data-action="海洋补给"><b>🧰</b>补给</button>
+      <button data-action="每日任务"><b>📋</b>任务</button>
+    </aside>
+    <section class="hero" aria-label="海底伙伴">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <img class="side-fish left" src="assets/fish/bluetang.webp" alt="蓝吊鱼伙伴">
+      <img class="hero-fish" src="assets/fish/clownfish.webp" alt="小丑鱼伙伴">
+      <img class="side-fish right" src="assets/fish/turtle.webp" alt="海龟伙伴">
+    </section>
+    <section class="cta-wrap"><button class="cta" data-action="开始探险"><span class="play">▶</span><span class="cta-copy"><strong>开始探险</strong><small id="homeContinue">新旅程 · 第 1 关 · 阳光珊瑚海</small></span></button></section>
+    <section class="feature-grid" aria-label="主要功能">
+      <button class="feature aqua" data-action="我的水族馆"><span class="feature-art"><img src="assets/fish/clownfish.webp" alt=""></span><strong>我的水族馆</strong><small>打造专属海底家园</small></button>
+      <button class="feature map" data-action="海域地图"><span class="feature-art"><span class="icon-art">🗺️</span></span><strong>海域地图</strong><small>探索六大海域</small></button>
+      <button class="feature dex" data-action="海洋图鉴"><span class="feature-art"><span class="icon-art">📖</span></span><strong>海洋图鉴</strong><small id="homeDex">发现 0 / 87 种鱼</small></button>
+    </section>
+    <p class="section-note">阳光正好，今天也去海底看看吧 ✨</p>
+  </div>
+</main>
+<nav class="bottom-nav" aria-label="主导航">
+  <button class="nav-item active" data-action="首页"><span class="ico">⌂</span>首页</button>
+  <button class="nav-item" data-action="海域"><span class="ico">🌊</span>海域</button>
+  <button class="nav-item" data-action="图鉴"><span class="ico">📚</span>图鉴</button>
+  <button class="nav-item" data-action="每日任务"><span class="ico">☑</span>任务</button>
+  <button class="nav-item" data-action="我的档案"><span class="ico">👤</span>我的</button>
+</nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="dialog"><h2 id="modalTitle">欢迎来到深海</h2><p id="modalText">这里会逐步接入对应的游戏模块。</p><button id="closeModal">知道啦</button></div></div>
+<script src="species-data.js"></script>
+<script>
+const toast=document.getElementById('toast'),modal=document.getElementById('modal');let toastTimer;
+function readSave(){try{return JSON.parse(localStorage.getItem('llaolao.fish.v1')||'{}')||{}}catch(e){return {}}}
+function refreshHome(){const d=readSave(),max=Math.max(1,Math.min(60,Number(d.max)||1)),chapter=Math.min(6,Math.ceil(max/10));const names=['阳光珊瑚海','荧光水母湾','幽灵沉船区','远古海底遗迹','极寒深海','黑暗深渊'];let playerLv=1,restXp=Math.max(0,Number(d.xp)||0);while(restXp>=playerLv*100){restXp-=playerLv*100;playerLv++}document.getElementById('homeLevel').textContent='Lv.'+String(playerLv).padStart(2,'0');document.getElementById('homeRank').textContent=names[chapter-1];document.getElementById('homeCoins').textContent=Number(d.coins||0).toLocaleString('zh-CN');document.getElementById('homePearls').textContent=Number(d.drops||0).toLocaleString('zh-CN');document.getElementById('homeXp').style.width=(restXp/(playerLv*100)*100)+'%';document.getElementById('homeContinue').textContent=(max>1?'继续':'新旅程')+' · 第 '+max+' 关 · '+names[chapter-1];const ids=new Set(),dex=d.dex||{};if(Array.isArray(dex))dex.forEach(x=>ids.add(Number(x)));else Object.keys(dex).forEach(k=>{if(dex[k])ids.add(Number(k))});((d.aqua&&Array.isArray(d.aqua.fish))?d.aqua.fish:[]).forEach(name=>{const f=(window.SPECIES_DATA||[]).find(x=>x.name===name);if(f)ids.add(f.id)});Object.keys(d.aqua&&d.aqua.owned||{}).forEach(k=>{if(d.aqua.owned[k])ids.add(Number(k))});document.getElementById('homeDex').textContent='发现 '+ids.size+' / '+(window.SPECIES_DATA?SPECIES_DATA.length:87)+' 种鱼';}
+refreshHome();window.addEventListener('pageshow',refreshHome);window.addEventListener('storage',refreshHome);
+function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),1900)}
+function openModal(title){document.getElementById('modalTitle').textContent=title;document.getElementById('modalText').textContent=title==='开始探险'?'首页入口已完成视觉升级。下一步将接入原有消除关卡、关卡进度和奖励系统。':'这是新版 '+title+' 的界面入口。对应功能将在后续开发阶段接入；当前原型不会伪称功能已经完成。';modal.classList.add('show');document.getElementById('closeModal').focus()}
+document.querySelectorAll('[data-action]').forEach(element=>element.addEventListener('click',()=>{const action=element.dataset.action;if(action==='开始探险'){let d={};try{d=JSON.parse(localStorage.getItem('llaolao.fish.v1')||'{}')||{}}catch(e){};location.href='gameplay.html?lv='+Math.max(1,Math.min(60,Number(d.max)||1))+'&hub=1';return}if(action==='海域地图'||action==='海域'){location.href='sea-map.html';return}if(action==='我的水族馆'){location.href='aquarium.html';return}if(action==='海洋图鉴'||action==='图鉴'){location.href='dex.html';return}if(action==='每日签到'||action==='每日任务'||action==='任务'){location.href='tasks.html'+(action==='每日签到'?'#signin':'');return}if(action==='海洋补给'||action==='商店'){location.href='shop.html';return}if(action==='我的档案'||action==='我的'){location.href='profile.html';return}if(action==='设置'){location.href='settings.html';return}if(action==='首页'){refreshHome();return}openModal(action)}));
+document.getElementById('closeModal').addEventListener('click',()=>modal.classList.remove('show'));
+modal.addEventListener('click',event=>{if(event.target===modal)modal.classList.remove('show')});
+document.addEventListener('keydown',event=>{if(event.key==='Escape')modal.classList.remove('show')});
+</script>
+</body>
+</html>
